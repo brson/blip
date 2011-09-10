@@ -1,0 +1,2 @@
+: ../rt/librt.so |> cp %f %o |> librt.so
+: ../act/act |> cp %f %o |> act

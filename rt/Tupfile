@@ -1,4 +1,3 @@
-: foreach *.c |> clang -Wall -c %f -o %o |> %B.o
-
-: *.o |> clang %f -o %o |> act
+: foreach *.c |> clang -Wall -fPIC -c %f -o %o |> %B.o
+: *.o |> clang -shared %f -o %o |> librt.so
 
