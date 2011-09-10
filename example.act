@@ -1,0 +1,138 @@
+_actor True
+_actor False
+
+_type bool {
+  _actor State = False
+  _on set { }
+  _on eq { }
+  _on [?That] and[It] {
+    _actor Get = _new get
+    _send It Get
+    _become {
+      _on [It] ?[Value] {
+      }
+    }
+  }
+  _on or { }
+  _on not { }
+}
+
+_type and (
+  _actor Value
+) {
+  _on [?That] get {
+    _send That Value
+  }
+}
+
+
+_type get
+
+_type openState
+_type closeState
+_type openMsg
+
+_type door {
+  _actor State _new closeState
+  _on _type open {
+    _set State _new openState
+  }
+  _on _type close {
+    _set State _new closeState
+  }
+  _on [?That] isOpen {
+    _send State _new eq(_new openState)
+    _become {
+      _on [State] true {
+        _send That _new true
+        _unbecome
+      }
+      _on [State] false {
+        _send That _new false
+        _unbecome
+      }
+    }
+  }
+}
+
+
+_actor openState
+_actor closeState
+_actor openMsg
+_actor closeMsg
+_actor eq
+
+
+_facet World {
+
+  _facet nothing
+  _facet thing
+  _facet get
+  _actor Unexpected = _new thing
+
+  _facet set(
+    _actor _ Value
+  ) {
+    _on get _ _from ?That {
+      _send That Value
+    }
+  }
+
+  _facet var {
+    _actor ? State = _new nothing
+    _on set ?SetMsg _from ? {
+      _send SetMsg _new get
+      _become {
+        _on ? ?Value _from SetMsg {
+	  _become _new var(Value)
+        }
+      }
+    }
+    _on get ? from ?That {
+      _send That State
+    }
+  }
+
+  _actor ? True = _new thing
+  _actor ? False = _new thing
+  _facet init
+
+  _facet bool {
+    _actor var State = _new var
+    _on init ? _from ? {
+      _actor Set = _new set
+      _send set _new set.init
+      _send State _new set
+      _on set ?SetMsg _from Setter {
+        _send SetMsg _new get
+        _become {
+          _on ? True _from SetMsg {
+           _send State _new set(True)
+           _become ^
+        }
+      }
+      _on ? False _from SetMsg {
+        _send State _new set(False)
+        _become ^
+      }
+      _on ? ? _from SetMsg {
+        _send Setter Unexpected
+        _become _new nothing
+      }
+    }
+  }
+
+  _facet boolState
+  _actor boolState TrueState = _new boolState
+  _actor boolState FalseState = _new boolState
+
+  _facet bool(
+    _actor boolState State
+  ) {
+  }
+
+  _facet true _extends bool
+  _facet false _extends bool
+
+  _on 
+}
