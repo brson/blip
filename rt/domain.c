@@ -27,8 +27,8 @@ domain_free(domain *domain, void *ptr) {
   free(ptr);
 }
 
-/*ac_address
-ad_register(ac_domain *domain, ac_actor *actor);
+address
+domain_register_actor(domain *domain, actor *actor);
 
 void
-ad_unregister(ac_domain *domain, ac_actor *actor);*/
+domain_unregister_actor(domain *domain, actor *actor);
