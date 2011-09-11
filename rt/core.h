@@ -11,10 +11,11 @@ typedef struct message_ message;
 typedef struct actor_ actor;
 typedef struct selector_ selector;
 typedef struct facet_ facet;
-typedef void (*msg_handler)(domain *, actor *, message *);
+typedef void (*msg_handler)(domain *, actor *, message);
 
 extern const dom_id invalid_dom_id;
 extern const actor_id invalid_actor_id;
+extern const address empty_selector_address;
 
 struct address_ {
   dom_id dom_id;
@@ -27,22 +28,18 @@ struct message_ {
 };
 
 struct selector_ {
-  address sender;
-  address value;
-  msg_handler *handler;
+  address *sender;
+  address *value;
+  msg_handler handler;
 };
 
 struct facet_ {
   uintptr_t num_selectors;
   selector *selectors;
-  uintptr_t data[];
 };
 
 struct actor_ {
   facet *current_facet;
-  uintptr_t num_elements;
-  address *elements;
-  uintptr_t data[];
 };
 
 #endif // _RT_CORE_H_

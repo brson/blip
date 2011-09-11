@@ -4,7 +4,7 @@
 
 void
 new_domain_ctor(domain *domain) {
-  actor *a = (actor*) domain_malloc(domain, sizeof(uintptr_t));
+  actor *a = (actor*) domain_malloc(domain, sizeof(actor));
   address address = domain_register_actor(domain, a);
   assert(address.dom_id != 0);
   assert(address.actor_id != 0);

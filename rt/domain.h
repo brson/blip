@@ -16,4 +16,8 @@ domain_register_actor(domain *domain, actor *actor);
 void
 domain_unregister_actor(domain *domain, actor *actor);
 
+void
+domain_send_message(domain *domain, actor *self,
+		    address dest, address value);
+
 #endif // _RT_DOMAIN_H_
