@@ -1,0 +1,3 @@
+: foreach *.c |> clang -Wall -Werror -I../rt -c %f -o %o |> %B.o
+: foreach *.o | ../rt/librt.so |> clang -L../rt -lrt -Wl,-rpath,rt,-rpath,../rt %f -o %o |> %B.test
+: foreach *.test |> valgrind -q --leak-check=full --error-exitcode=100 ./%f |>

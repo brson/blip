@@ -1,23 +1,22 @@
-#include "core.h"
+#include "kernel.h"
 #include <stdlib.h>
 
-typedef struct ak_kernel_ ak_kernel;
-
 struct ak_kernel_ {
+  int i;
 };
 
 ak_kernel *
 ak_start() {
-  abort();
+  ak_kernel *kernel = (ak_kernel*) malloc(sizeof(ak_kernel));
+  return kernel;
 }
 
 int
 ak_join(ak_kernel *kernel) {
-  abort();
+  free(kernel);
+  return 0;
 }
 
-ac_address
-ak_load_package(char *name) {
-  abort();
+void
+ak_new_domain(ak_new_domain_cb new_domain_cb) {
 }
-
