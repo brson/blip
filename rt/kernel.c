@@ -1,5 +1,6 @@
 #include "kernel.h"
 #include <stdlib.h>
+#include <assert.h>
 
 struct ak_kernel_ {
   int i;
@@ -19,4 +20,7 @@ ak_join(ak_kernel *kernel) {
 
 void
 ak_new_domain(ak_new_domain_cb new_domain_cb) {
+  assert(new_domain_cb != 0);
+  ac_domain domain;
+  new_domain_cb(&domain);
 }

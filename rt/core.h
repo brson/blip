@@ -1,3 +1,6 @@
+#ifndef _RT_CORE_H_
+#define _RT_CORE_H_
+
 #include <stdint.h>
 
 typedef uintptr_t ac_dom_id;
@@ -44,3 +47,5 @@ struct ac_actor_ {
   ac_address *elements;
   uintptr_t data[];
 };
+
+#endif // _RT_CORE_H_
