@@ -11,4 +11,4 @@ int
 kernel_join(kernel *kernel);
 
 void
-kernel_new_domain(domain_ctor);
+kernel_new_domain(kernel *, domain_ctor);

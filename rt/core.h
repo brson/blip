@@ -1,9 +1,9 @@
 #ifndef _RT_CORE_H_
 #define _RT_CORE_H_
 
-#include <stdint.h>
+/*#include <stdint.h>
 
-/*typedef uintptr_t ac_dom_id;
+typedef uintptr_t ac_dom_id;
 typedef uintptr_t ac_actor_id;
 typedef struct ac_address_ ac_address;
 typedef struct ac_message_ ac_message;
@@ -44,5 +44,4 @@ struct actor_ {
   uintptr_t data[];
 };
 */
-
 #endif // _RT_CORE_H_
