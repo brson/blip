@@ -28,7 +28,14 @@ domain_free(domain *domain, void *ptr) {
 }
 
 address
-domain_register_actor(domain *domain, actor *actor);
+domain_register_actor(domain *domain, actor *actor) {
+  address address = {
+    .dom_id = 1,
+    .actor_id = 1
+  };
+  return address;
+}
 
 void
-domain_unregister_actor(domain *domain, actor *actor);
+domain_unregister_actor(domain *domain, actor *actor) {
+}
