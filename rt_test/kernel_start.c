@@ -3,7 +3,7 @@
 
 int
 main() {
-  ak_kernel *kernel = ak_start();
-  int res = ak_join(kernel);
+  kernel *kernel = kernel_start();
+  int res = kernel_join(kernel);
   assert(res == 0);
 }

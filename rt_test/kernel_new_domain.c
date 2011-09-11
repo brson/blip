@@ -5,15 +5,15 @@
 bool created = false;
 
 void
-new_domain_cb(ac_domain *domain) {
+new_domain_ctor(domain *domain) {
   assert(domain != 0);
   created = true;
 }
 
 int
 main() {
-  ak_kernel *kernel = ak_start();
-  ak_new_domain(new_domain_cb);
-  ak_join(kernel);
+  kernel *kernel = kernel_start();
+  kernel_new_domain(new_domain_ctor);
+  kernel_join(kernel);
   assert(created == true);
 }

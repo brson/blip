@@ -2,25 +2,25 @@
 #include <stdlib.h>
 #include <assert.h>
 
-struct ak_kernel_ {
+struct kernel_ {
   int i;
 };
 
-ak_kernel *
-ak_start() {
-  ak_kernel *kernel = (ak_kernel*) malloc(sizeof(ak_kernel));
-  return kernel;
+kernel *
+kernel_start() {
+  kernel *k = (kernel *) malloc(sizeof(kernel));
+  return k;
 }
 
 int
-ak_join(ak_kernel *kernel) {
+kernel_join(kernel *kernel) {
   free(kernel);
   return 0;
 }
 
 void
-ak_new_domain(ak_new_domain_cb new_domain_cb) {
-  assert(new_domain_cb != 0);
-  ac_domain domain;
-  new_domain_cb(&domain);
+kernel_new_domain(domain_ctor ctor) {
+  assert(ctor != 0);
+  domain domain;
+  ctor(&domain);
 }

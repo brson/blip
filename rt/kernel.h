@@ -1,17 +1,14 @@
-#include "core.h"
-#include <stddef.h>
+#include "domain.h"
 
-typedef ac_address (*ak_package_init)();
+typedef struct kernel_ kernel;
 
-typedef struct ak_kernel_ ak_kernel;
+typedef void (*domain_ctor)(domain *);
 
-typedef void (*ak_new_domain_cb)(ac_domain *domain);
-
-ak_kernel *
-ak_start();
+kernel *
+kernel_start();
 
 int
-ak_join(ak_kernel *kernel);
+kernel_join(kernel *kernel);
 
 void
-ak_new_domain(ak_new_domain_cb new_domain_cb);
+kernel_new_domain(domain_ctor);

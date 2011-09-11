@@ -1,14 +1,19 @@
 #include "core.h"
 #include <stddef.h>
 
+typedef struct domain_ domain;
+
+struct domain_ {
+};
+
 void *
-ad_malloc(ac_domain *domain, size_t size);
+domain_malloc(domain *domain, size_t size);
 
 void
-ad_free(ac_domain *domain, void *ptr);
+domain_free(domain *domain, void *ptr);
 
-ac_address
-ad_register(ac_domain *domain, ac_actor *actor);
+/*address
+domain_register(domain *domain, actor *actor);
 
 void
-ad_unregister(ac_domain *domain, ac_actor *actor);
+unregister(domain *domain, actor *actor);*/
