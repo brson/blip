@@ -1,0 +1,2 @@
+: foreach *.c |> clang -Wall -Werror -I../rt -c %f -o %o |> %B.o
+: foreach *.o | ../rt/librt.so |> clang -L ../rt -lrt -Wl,-rpath,rt,-rpath,../. %f -o %o |> act
